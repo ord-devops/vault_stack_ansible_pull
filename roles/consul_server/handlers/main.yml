@@ -1,0 +1,10 @@
+---
+# handlers file for consul
+
+- name: reload consul service
+  service:
+    name: consul
+    state: reloaded
+
+- name: reload systemctl daemon
+  command: systemctl daemon-reload

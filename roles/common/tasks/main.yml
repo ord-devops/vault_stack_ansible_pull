@@ -1,0 +1,11 @@
+---
+# tasks file for common
+
+- name: Set timezone to CET
+  file: 
+    src: /usr/share/zoneinfo/Europe/Amsterdam
+    dest: /etc/localtime
+    state: link
+  when: ansible_distribution=="CentOS"
+
+

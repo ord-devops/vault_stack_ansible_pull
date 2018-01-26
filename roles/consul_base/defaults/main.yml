@@ -1,0 +1,5 @@
+---
+# defaults file for consul_base
+
+consul_version: 1.0.3
+consul_install_dir: /opt/consul
