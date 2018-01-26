@@ -8,4 +8,9 @@
     state: link
   when: ansible_distribution=="CentOS"
 
+- name: Install required packages
+  yum:
+    name: "{{ required_packages }}"
+    state: installed
+
 

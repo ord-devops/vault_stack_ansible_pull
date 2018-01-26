@@ -1,2 +1,8 @@
 ---
 # defaults file for common
+
+required_packages:
+  - unzip
+  - bind-utils
+  - tcpdump
+  - tree
