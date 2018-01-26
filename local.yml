@@ -4,27 +4,26 @@
   hosts: localhost
   become: true
 
-  # pre_tasks:
-  #   - name: install boto 3
-  #     pip:
-  #       name: boto3
-  #   - name: get instance metadata
-  #     ec2_metadata_facts:
-  #   - name: get instance facts
-  #     ec2_instance_facts:
-  #       instance_ids:
-  #         - "{{ ansible_ec2_instance_id }}"
-  #     register: instances
-  #   - set_fact:
-  #       instance_role: "{{ instances.instances[0].tags.role }}"
+  pre_tasks:
+    - name: install boto 3
+      pip:
+        name: boto3
+    - name: get instance metadata
+      ec2_metadata_facts:
+    - name: get instance facts
+      ec2_instance_facts:
+        instance_ids:
+          - "{{ ansible_ec2_instance_id }}"
+      register: instances
+    - set_fact:
+        instance_role: "{{ instances.instances[0].tags.role }}"
   roles:
     - common
-    - consul_server
 
-  # post_tasks:
-  #   - debug:
-  #       var: instance_role
-  #   - name: run consul role
-  #     include_role:
-  #       name: consul_server
-  #     when: instance_role == 'consul_server'
+  post_tasks:
+    - debug:
+        var: instance_role
+    - name: run consul role
+      include_role:
+        name: consul_server
+      when: instance_role == 'consul_server'
