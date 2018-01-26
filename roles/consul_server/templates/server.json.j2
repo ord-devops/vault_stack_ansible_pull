@@ -1,5 +1,5 @@
 {
-  "advertise_addr": "{{ ansible_default_ipv4 }}",
+  "advertise_addr": "{{ ansible_default_ipv4.address }}",
   "datacenter": "{{ aws_region }}",
   "data_dir": "{{ consul_data_dir }}",
   "log_level": "INFO",
